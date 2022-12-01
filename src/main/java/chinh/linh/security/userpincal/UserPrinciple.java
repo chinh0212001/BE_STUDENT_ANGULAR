@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserPrinciple implements UserDetails {
-//    private Long id;
+    //    private Long id;
     private String name;
     private String username;
     private String email;
     @JsonIgnore
     private String password;
     private String avatar;
-    private Collection<? extends GrantedAuthority>roles;
+    private Collection<? extends GrantedAuthority> roles;
 
 
     public UserPrinciple() {
@@ -34,8 +34,9 @@ public class UserPrinciple implements UserDetails {
         this.avatar = avatar;
         this.roles = roles;
     }
-    public static UserPrinciple build(User user){
-        List<GrantedAuthority>authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
+
+    public static UserPrinciple build(User user) {
+        List<GrantedAuthority> authorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
         return new UserPrinciple(
                 user.getName(),
                 user.getUsername(),
@@ -45,13 +46,16 @@ public class UserPrinciple implements UserDetails {
                 authorities
         );
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
+
     @Override
     public String getPassword() {
         return password;
@@ -60,6 +64,10 @@ public class UserPrinciple implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public String getAvatar(){
+        return avatar;
     }
 
     @Override
