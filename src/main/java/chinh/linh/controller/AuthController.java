@@ -47,7 +47,7 @@ public class AuthController {
 
     @PostMapping( "/signup" )
     public ResponseEntity<?> register(@Valid @RequestBody SignUpForm signUpForm) {
-        if (userServiceIMPL.existsByUsername(signUpForm.getUsername())) {
+          if (userServiceIMPL.existsByUsername(signUpForm.getUsername())) {
             return new ResponseEntity<>(new ResponseMessage("The username is existed"), HttpStatus.OK);
         }
         if (userServiceIMPL.existsByEmail(signUpForm.getEmail())) {
