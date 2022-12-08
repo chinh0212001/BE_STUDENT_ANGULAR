@@ -72,9 +72,9 @@ public class StudentController {
         }
         students1.get().setName(students.getName());
         //muon sua gi thi them vao
-//        students1.get().setAge(students.getAge());
-//        students1.get().setAvatar(students.getAvatar());
-//        students1.get().setAddress(students.getAddress());
+        students1.get().setAge(students.getAge());
+        students1.get().setAvatar(students.getAvatar());
+        students1.get().setAddress(students.getAddress());
         studentService.save(students1.get());
         return new ResponseEntity<>(new ResponseMessage("update_success!!!"),HttpStatus.OK);
     }
